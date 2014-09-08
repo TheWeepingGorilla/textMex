@@ -1,14 +1,14 @@
 class Message < ActiveRecord::Base
-  before_create :send_message
+  before_save :send_message
 
 private
 
   def send_message
     response = RestClient::Request.new(
       :method => :post,
-      :url => "https://api.twilio.com/2010-04-01/Accounts/AC64f7a61a0d1ec57f894ce2504c33a18c/Messages.json",
-      :user => "AC64f7a61a0d1ec57f894ce2504c33a18c",
-      :password => "ff28441d18e64ddf3ff535004df4c4ed",
+      :url => "https://api.twilio.com/2010-04-01/Accounts/#{ENV['TWILIO_ACCOUNT_SID']}/Messages.json",
+      :user => ENV['TWILIO_ACCOUNT_SID'],
+      :password => ENV['TWILIO_AUTH_TOKEN'],
       :payload => { :Body => body,
                     :To => to,
                     :From => from }

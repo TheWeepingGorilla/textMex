@@ -36,8 +36,8 @@ group :development do
 end
 
 group :test, :development do
-  gem 'rspec-rails'
   gem 'dotenv-rails'
+  gem 'rspec-rails'
 end
 
 group :test do
