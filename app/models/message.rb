@@ -12,7 +12,8 @@ private
         :password => ENV['TWILIO_AUTH_TOKEN'],
         :payload => { :Body => body,
                       :To => number,
-                      :From => from }
+                      :From => from,
+                      :MediaUrl => mediaUrl }
       ).execute
     end
   end
