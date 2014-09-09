@@ -17,8 +17,8 @@
       <%= link_to "Login", new_user_session_path %>
     <% end %>
   </div>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <p><%= flash[:notice] %></p>
+  <p><%= flash[:alert] %></p>
   <%= yield %>
 
 </body>
