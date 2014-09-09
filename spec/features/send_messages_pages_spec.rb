@@ -2,11 +2,13 @@ require 'rails_helper'
 
 describe 'send messages to phones from the web' do
   it 'sends an sms to a phone' do
-    visit '/'
-    fill_in 'body'
-    fill_in 'to'
-    fill_in 'from'
-    click_link 'submit'
-    expect(page).to have_content 'Message sent'
+    VCR.use_cassette('new_message') do
+      visit '/'
+      fill_in 'Body', :with => 'Sup, baby ninjas?!'
+      fill_in 'To', :with => '2184646527'
+      fill_in 'From', :with => '+15005550006'
+      click_button 'Create Message'
+      expect(page).to have_content 'Message Sent'
+    end
   end
 end
