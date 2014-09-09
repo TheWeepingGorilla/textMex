@@ -21,6 +21,6 @@ class MessagesController < ApplicationController
 
 private
   def message_params
-    params.require(:message).permit(:to,:from,:body,:MediaUrl)
+    params.require(:message).permit(:to,:from,:body,:mediaUrl)
   end
 end
